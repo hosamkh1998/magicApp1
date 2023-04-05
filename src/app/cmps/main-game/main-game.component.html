@@ -1,0 +1,52 @@
+<div class="row mt-2">
+     <div class="col-12">
+          <h1 class="fs-2 fw-bolder">
+               اكتشف مستقبلك بالاعتماد على كتاب سر الأسرار
+          </h1>
+     </div>
+     <div class="form-floating mb-3 col-6">
+          <input
+               (input)="calcNameValue(1)"
+               type="text"
+               class="form-control"
+               id="floatingInput"
+               placeholder="اسم الطرف الاول"
+               [(ngModel)]="firstUser.name"
+          />
+          <label for="floatingInput">اسم الطرف الاول</label>
+          <p class="note">
+               <b class="text-danger">الذكر</b> إذا كانت المقارنة بين ذكر وأنثى
+          </p>
+          <p>مجموع الاسم بحسب حساب الجمّل: {{ firstUser.value }}</p>
+          <p>قيمة الاسم بحسب الكتاب: {{ firstUser.valueToMagic }}</p>
+     </div>
+     <div class="form-floating mb-3 col-6">
+          <input
+               (input)="calcNameValue(2)"
+               type="text"
+               class="form-control"
+               id="floatingInput"
+               placeholder="اسم الطرف الثاني"
+               [(ngModel)]="secondUser.name"
+          />
+          <label for="floatingInput">اسم الطرف الثاني</label>
+          <p class="note">
+               <b class="text-danger">الانثى</b> إذا كانت المقارنة بين ذكر وأنثى
+          </p>
+          <p>مجموع الاسم بحسب حساب الجمّل: {{ secondUser.value }}</p>
+          <p>قيمة الاسم بحسب الكتاب: {{ secondUser.valueToMagic }}</p>
+     </div>
+
+     <div class="col-12">
+          <button
+               class="btn btn-outline-primary col-12"
+               [disabled]="!firstUser.name.length || !secondUser.name.length"
+          >
+               أكشف المستقبل
+          </button>
+
+          <div class="alert alert-danger mt-2" role="alert" *ngIf="errMsg">
+               أنت تكتب احرف غير عربية أو ربما حركات وذلك سيشوّش النتيجة!
+          </div>
+     </div>
+</div>
